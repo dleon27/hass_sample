@@ -1,0 +1,384 @@
+homeassistant:
+  temperature_unit: F
+  time_zone: America/New_York
+  customize:
+     device_tracker.1000152:
+       friendly_name: "Dave Gov"
+       #icon:mdi:male
+     device_tracker.100036:
+       friendly_name: "Dave"
+     device_tracker.100019:
+       friendly_name: "Michaela"
+     sensor.yr_temperature:
+       friendly_name: "Outside Temperature"
+     sensor.yr_humidity:
+       friendly_name: "Outside Humidity"
+     sensor.yr_wind_speed:
+       friendly_name: "Wind Speed"
+       icon: mdi:speedometer
+     sensor.yr_wind_direction:
+       friendly_name: "Wind Direction"
+       icon: mdi:compass
+     binary_sensor.prox_sensor_1:
+       friendly_name: "Office"
+     binary_sensor.prox_sensor_2:
+       friendly_name: "Front Door"
+
+zone:
+  - name: 'Home'
+    latitude: [redacted]
+    longitude: [redacted]
+    radius: 25
+    icon: 'mdi:home'
+
+http:
+  api_password: password
+# Set to 1 to enable development mode
+# development: 1
+  
+
+####################################################
+#                                                  #
+#                     Includes                     #
+#                                                  #
+####################################################
+
+group: !include group.yaml
+camera: !include cameras.yaml
+device_tracker: !include device_trackers.yaml
+switch: !include switches.yaml
+alarm_control_panel: !include alarm_control_panel.yaml
+automation: !include automation.yaml
+script: !include scripts.yaml
+
+####################################################
+#                                                  #
+#                     Enables                      #
+#                                                  #
+####################################################
+   
+# MQTT Broker
+mqtt:
+  broker: 127.0.0.1
+  port: 1883
+  client_id: [redacted]
+  keepalive: 60
+#  username: [redacted]
+#  password: [redacted]
+  protocol: 3.1
+
+#upnp:
+
+
+# Track the sun
+sun:
+
+# Enables support for tracking state changes over time.
+history:
+
+# Allows you to issue voice commands from the frontend
+conversation:
+
+# Checks for available updates
+updater:
+
+# View all events in a logbook
+logbook:
+
+notify:
+  platform: pushbullet
+  api_key: [redacted]
+  name: HASS
+
+
+# Enables the frontend
+frontend:
+
+# Discover some devices automatically
+discovery:
+
+browser:
+
+####################################################
+#                                                  #
+#                     Protocol devices             #
+#                                                  #
+####################################################
+
+zwave:
+  usb_path: /dev/ttyACM0
+#  config_path: 
+  polling_interval: 60000
+  customize:
+#    sensor.greenwave_powernode_6_port_energy_10:
+#    polling_intensity: 1
+
+wemo:
+
+#arduino:
+#  port: /dev/ttyACM1
+
+####################################################
+#                                                  #
+#                     Alarm Panel                  #
+#                                                  #
+####################################################
+
+####################################################
+#                                                  #
+#                     Groups                       #
+#                                                  #
+####################################################
+      
+####################################################
+#                                                  #
+#                     Switches                     #
+#                                                  #
+####################################################
+
+####################################################
+#                                                  #
+#                     Lights                       #
+#                                                  #
+####################################################
+
+####################################################
+#                                                  #
+#                     Cameras                      #
+#                                                  #
+####################################################
+  
+####################################################
+#                                                  #
+#                     Sensors                      #
+#                                                  #
+####################################################
+sensor:
+  platform: time_date
+  display_options:
+    - "date_time"
+
+
+# Prediction of weather
+sensor yr:
+  platform: yr
+  monitored_conditions:
+    - temperature
+#    - symbol
+    - precipitation
+    - windSpeed
+    - pressure
+    - windDirection
+    - humidity
+#    - cloudiness
+#    - dewpointTemperature
+
+sensor Attic_DHT:
+  - platform: mqtt
+    state_topic: "/home/attic/dht11/temperature"
+    name: "Attic DHT Temp. Sensor"
+    qos: 0
+    unit_of_measurement: "°F"
+#    value_template: '{{ value.x }}'
+
+  - platform: mqtt
+    state_topic: "/home/attic/ac/temperature"
+    name: "Attic AC Duct Temp. Sensor"
+    qos: 0
+    unit_of_measurement: "°F"
+
+  - platform: mqtt
+    state_topic: "/home/attic/dht11/heat_index"
+    name: "Attic DHT Heat Index Sensor"
+    qos: 0
+    unit_of_measurement: "°F"
+#    value_template: '{{ value.x }}'
+
+  - platform: mqtt
+    state_topic: "/home/attic/dht11/humidity"
+    name: "Attic DHT Humidity Sensor"
+    qos: 0
+    unit_of_measurement: "%"
+#    value_template: '{{ value.x }}'
+
+
+sensor Carport_DHT:
+  - platform: mqtt
+    state_topic: "/home/carport_sensor/temperature"
+    name: "Carport Sensor Temp"
+    qos: 0
+    unit_of_measurement: "°C"
+#    value_template: '{{ value.x }}'
+
+  - platform: mqtt
+    state_topic: "/home/carport_sensor/humidity"
+    name: "Carport Sensors Humidity"
+    qos: 0
+    unit_of_measurement: "%"
+#    value_template: '{{ value.x }}'
+
+  - platform: mqtt
+    state_topic: "/home/carport_sensor/propane"
+    name: "Carport Sensors Propane"
+    qos: 0
+    unit_of_measurement: "%"
+#    value_template: '{{ value.x }}'
+
+sensor Mobile_DHT:
+  - platform: mqtt
+    state_topic: "/home/mobile_sensor/temperature"
+    name: "Mobile DHT MQTT Temp. Sensor"
+    qos: 0
+    unit_of_measurement: "°C"
+#    value_template: '{{ value.x }}'
+
+  - platform: mqtt
+    state_topic: "/home/mobile_sensor/humidity"
+    name: "Mobile DHT MQTT Humidity Sensor"
+    qos: 0
+    unit_of_measurement: "%"
+
+sensor Wemos_DHT:
+  - platform: mqtt
+    state_topic: "/home/wemos_D1_sensor/temperature"
+    name: "Office Sensor Temp"
+    qos: 0
+    unit_of_measurement: "°C"
+#    value_template: '{{ value.x }}'
+
+  - platform: mqtt
+    state_topic: "/home/wemos_D1_sensor/humidity"
+    name: "Office Sensors Humidity"
+    qos: 0
+    unit_of_measurement: "%"
+#    value_template: '{{ value.x }}'
+
+
+#sensor Arduino_DHT11:
+#  platform: dht
+#  sensor: DHT22
+#  pin: 2
+#  name: office
+#  monitored_conditions:
+#    - temperature
+#    - humidity
+
+sensor net:
+  platform: speedtest
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
+sensor cpu:
+  platform: cpuspeed
+  name: CPU     
+
+#MQTT Mosquitto Sensors	
+binary_sensor:
+#  - platform: mqtt
+#    state_topic: "/home/office/digitalswitch/"
+#    name: "Digital Logic Switch"
+#    qos: 0
+#    payload_on: "1"
+#    payload_off: "0"
+#    sensor_class: opening
+#    value_template: '{{ value.x }}'
+
+  - platform: mqtt
+    state_topic: "/home/office/dht11/command/"
+    name: "Relay Switch"
+    qos: 0
+    payload_on: "Relay_ON"
+    payload_off: "Relay_OFF"
+#    sensor_class: opening
+#    value_template: '{{ value.x }}'
+
+  - platform: mqtt
+    state_topic: "/home/alarm/"
+    name: "kitchen french door"
+    qos: 0
+    payload_on: "12345"
+    sensor_class: opening
+
+  - platform: mqtt
+    state_topic: "/home/alarm/"
+    name: "front door"
+    qos: 0
+    payload_on: "[redacted]"
+    sensor_class: opening
+
+  - platform: mqtt
+    state_topic: "/home/alarm/"
+    name: "office window"
+    qos: 0
+    payload_on: "[redacted]"
+    sensor_class: opening
+
+  - platform: mqtt
+    state_topic: "/home/alarm/"
+    name: "studio window"
+    qos: 0
+    payload_on: "[redacted]"
+    sensor_class: opening
+
+  - platform: mqtt
+    state_topic: "/home/alarm/"
+    name: "bedroom window"
+    qos: 0
+    payload_on: "[redacted]"
+    sensor_class: opening
+
+  - platform: mqtt
+    state_topic: "/home/alarm/"
+    name: "livingroom window"
+    qos: 0
+    payload_on: "[redacted]"
+    sensor_class: opening
+
+  - platform: mqtt
+    state_topic: "/home/alarm/"
+    name: "livingroom french door"
+    qos: 0
+    payload_on: "[redacted]"
+    sensor_class: opening
+
+  - platform: mqtt
+    state_topic: "/home/alarm/"
+    name: "Michaela_SOS"
+    qos: 0
+    payload_on: "[redacted]"
+    sensor_class: opening
+
+  - platform: mqtt
+    state_topic: "/home/alarm/"
+    name: "David_SOS"
+    qos: 0
+    payload_on: "[redacted]"
+    sensor_class: opening
+
+  - platform: mqtt
+    state_topic: "/home/alarm/"
+    name: "Prox_Sensor_1"
+    qos: 0
+    payload_on: "[redacted]"
+    sensor_class: motion
+
+  - platform: mqtt
+    state_topic: "/home/alarm/"
+    name: "Prox_Sensor_2"
+    qos: 0
+    payload_on: "[redacted]"
+    sensor_class: motion
+
+####################################################
+#                                                  #
+#                     Automation                   #
+#                                                  #
+####################################################
+
+####################################################
+#                                                  #
+#                     Scripts                      #
+#                                                  #
+####################################################

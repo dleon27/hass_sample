@@ -1,0 +1,111 @@
+  default view:
+    view: yes
+    entities:
+      - sensor.office_dht_mqtt_humidity_sensor
+      - sensor.office_dht_mqtt_temp_sensor
+      - sensor.yr_temperature
+      - sensor.yr_humidity
+      - sensor.yr_wind_speed
+      - sensor.yr_wind_direction
+      - sensor.date__time
+      - zone.home
+      - camera.key_west
+
+  Family:
+   name: Family
+   view: yes
+   entities:
+      - group.dave
+      - group.michaela
+
+  dave:
+   name: dave
+   view: no
+   entities:
+      - device_tracker.100036
+      - device_tracker.1000152
+
+  michaela:
+   name: michaela
+   view: no
+   entities:
+      - device_tracker.100019
+
+  Living_Room:
+    name: Living Room
+    view: yes
+    entities:
+      - switch.couchlampleft
+      - switch.multi_relay_1
+      - switch.multi_relay_2
+      - switch.multi_relay_3
+      - switch.multi_relay_4
+   
+  office:    
+    name: Office
+    view: yes
+    entities:
+      - sensor.office_sensor_temp
+      - sensor.office_sensors_humidity
+#      - switch.office_relay
+      - switch.esp826601_switch
+      - switch.gun_cabinet_relay
+
+  attic:
+    name: Attic
+    view: yes
+    entities:
+      - sensor.attic_dht_temp_sensor
+      - sensor.attic_dht_humidity_sensor
+      - sensor.attic_dht_heat_index_sensor
+      - sensor.attic_ac_duct_temp_sensor
+      - switch.attic_relay
+
+  carport:
+    name: Carport
+    view: yes
+    entities:
+      - sensor.carport_sensors_humidity
+      - sensor.carport_sensor_temp
+      - sensor.carport_sensors_propane
+
+  Enviornment:
+    name: Enviornment
+    view: yes
+    entities:
+      - sensor.mobile_dht_mqtt_temp_sensor
+      - sensor.mobile_dht_mqtt_humidity_sensor      
+      
+
+  LAN_Conditions:
+    name: Lan Conditions
+    view: yes
+    entities:
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+      - sensor.speedtest_ping
+      - sensor.cpu
+      - switch.wol_op_780
+      - switch.wol_op_755
+      - switch.wol_ASUS01
+      - switch.wol_toshiba01
+      - switch.reset_multi_relay
+      - switch.reset_attic_relay
+      - switch.reset_gun_cabinet_relay
+
+  Alarm_System:
+    name: Alarm System
+    view: yes
+    entities:
+      - alarm_control_panel.mqtt_alarm
+      - binary_sensor.prox_sensor_1
+      - binary_sensor.prox_sensor_2
+      - binary_sensor.kitchen_french_door
+      - binary_sensor.front_door
+      - binary_sensor.michaela_sos
+      - binary_sensor.david_sos
+      - binary_sensor.bedroom_window
+      - binary_sensor.livingroom_french_door
+      - binary_sensor.livingroom_window
+      - binary_sensor.office_window
+      - binary_sensor.studio_window

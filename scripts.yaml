@@ -1,0 +1,22 @@
+####Morning Alarm####
+morning: !include scripts/morning.yaml
+alarm_clock_morning: !include scripts/alarm_clock_morning.yaml
+####ALARM ####
+#alarm_away:  !include scripts/alarm_away.yaml
+#alarm_home:  !include scripts/alarm_home.yaml
+#alarm_triggered: !include scripts/alarm_triggered.yaml
+#alarm_red: !include scripts/alarm_red.yaml
+####TEST SCRIPTS####
+#test: !include scripts/test.yaml
+####GLOBAL SCRIPTS####
+#all_off: !include scripts/all_off.yaml
+#all_on: !include scripts/all_on.yaml
+#all_on_day: !include scripts/all_on_day.yaml
+####TRIGGERED LIGHTS####
+livingroom_timed_lamp: !include scripts/livingroom_timed_lamp.yaml
+livingroom_timer_off: !include scripts/livingroom_timer_off.yaml
+office_timed_lamp: !include scripts/office_timed_lamp.yaml
+office_timer_off: !include scripts/office_timer_off.yaml
+#restart_ha: !include scripts/restart_ha.yaml
+####PARTY
+#refresh_devices: !include scripts/refresh_devices.yaml

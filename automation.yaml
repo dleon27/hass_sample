@@ -1,0 +1,61 @@
+  - alias: Wake-up Turn on Couch light
+    trigger:
+      platform: time
+      after: "05:45:00"
+    action:
+      service: switch.turn_on
+      entity_id: switch.couchlampleft
+
+  - alias: Leave for work
+    trigger:
+      platform: time
+      after: "07:40:00"
+    action:
+      - service: switch.turn_off
+        entity_id: switch.couchlampleft
+      - service: notify.HASS
+        data:
+          message: "David, it's time to leave for work"
+          title: "David work"
+
+  - alias: Evening Turn on Couch light
+    trigger:
+      platform: time
+      after: "20:0:00"
+    action:
+      - service: switch.turn_on
+        entity_id: switch.couchlampleft
+      - service: notify.HASS
+        data:
+          message: "David, Time to quit working"
+          title: "Family Time"
+
+  - alias: Bedtime Turn off Couch light
+    trigger:
+      platform: time
+      after: "22:00:00"
+    action:
+      - service: switch.turn_off
+        entity_id: switch.couchlampleft
+      - service: notify.HASS
+        data:
+          message: "Bedtime, Good Night"
+          title: "Bedtime"
+
+  - alias: Turn on gun cabinet light when there is movement
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.prox_sensor_1
+        to: 'on'
+    action:
+      service: script.turn_on
+      entity_id: script.office_timed_lamp
+
+  - alias: Turn on couchlampleft when there is movement
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.prox_sensor_2
+        to: 'on'
+    action:
+      service: switch.turn_on
+      entity_id: switch.couchlampleft

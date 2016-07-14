@@ -1,0 +1,12 @@
+sequence:
+  # Cancel ev. old timers
+  - service: script.turn_off
+    data:
+      entity_id: script.livingroom_timer_off
+  - service: switch.turn_on
+    data:
+      entity_id: switch.couchlampleft
+    # Set new timer
+  - service: switch.turn_on
+    data:
+      entity_id: script.livingroom_timer_off

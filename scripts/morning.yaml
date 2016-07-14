@@ -1,0 +1,15 @@
+sequence:
+- service: light.turn_on
+  data:
+    entity_id: switch.gun_cabinet_relay
+- event: LOGBOOK_ENTRY
+  event_data:
+    name: EVENT
+    message: "Good Morning! Turning on office and livingroom lights."
+- service: alarm_control_panel.home
+- service: notify.notify
+  data:
+    message: "Good Morning! Turning on office and livingroom lights."
+- service: switch.turn_on
+  data:
+    entity_id: switch.couchlampleft

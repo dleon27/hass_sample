@@ -1,0 +1,12 @@
+  - device_tracker Nmap:
+    platform: nmap_tracker
+    hosts: 10.0.0.1/24
+    track_new_devices: yes
+    interval_seconds: 300
+    consider_home: 180
+
+  - platform: owntracks
+    track_new_devices: yes
+    consider_home: 180
+    home_interval: 1
+    max_gps_accuracy: 300

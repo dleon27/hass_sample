@@ -1,0 +1,7 @@
+sequence:
+  - event: LOGBOOK_ENTRY
+  - delay:
+      minutes: 10
+  - service: switch.turn_off
+    data:
+      entity_id: switch.gun_cabinet_relay

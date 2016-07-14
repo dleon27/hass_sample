@@ -1,0 +1,11 @@
+  - platform: mqtt
+    state_topic: "/home/alarm/"
+    command_topic: "/home/alarm/command/"
+    name: "Home Alarm"
+    qos: 0
+    payload_disarm: "123456"
+    payload_arm_home: "234567"
+    payload_arm_away: "345678"
+    payload_sos: "456789"
+    code: "9876"
+        

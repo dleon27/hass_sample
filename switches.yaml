@@ -1,0 +1,122 @@
+  - platform: mqtt
+    name: "gun cabinet Relay"
+    state_topic: "/home/gun_cabinet/command/"
+    command_topic: "/home/gun_cabinet/command/"
+    payload_on: "ON"
+    payload_off: "OFF"
+    optimistic: false
+    qos: 0
+    retain: false
+
+  - platform: mqtt
+    name: "reset gun cabinet Relay"
+    state_topic: "/home/gun_cabinet/command/"
+    command_topic: "/home/gun_cabinet/command/"
+    payload_on: "RESET"
+    payload_off: "OFF"
+    optimistic: false
+    qos: 0
+    retain: false
+
+  - platform: mqtt
+    name: "Attic Relay"
+    state_topic: "/home/attic/command/"
+    command_topic: "/home/attic/command/"
+    payload_on: "ON"
+    payload_off: "OFF"
+    optimistic: false
+    qos: 0
+    retain: false
+
+  - platform: mqtt
+    name: "reset attic Relay"
+    state_topic: "/home/attic/command/"
+    command_topic: "/home/attic/command/"
+    payload_on: "RESET"
+    payload_off: "OFF"
+    optimistic: false
+    qos: 0
+    retain: false
+
+  - platform: mqtt
+    name: "Multi_Relay_1"
+    state_topic: "/home/multi_relay/command/"
+    command_topic: "/home/multi_relay/command/"
+    payload_on: "Relay_1_ON"
+    payload_off: "Relay_1_OFF"
+    optimistic: false
+    qos: 0
+    retain: false
+#    value_template: '{{ value.x }}'
+
+  - platform: mqtt
+    name: "Multi_Relay_2"
+    state_topic: "/home/multi_relay/command/"
+    command_topic: "/home/multi_relay/command/"
+    payload_on: "Relay_2_ON"
+    payload_off: "Relay_2_OFF"
+    optimistic: false
+    qos: 0
+    retain: false
+#    value_template: '{{ value.x }}'
+
+  - platform: mqtt
+    name: "Multi_Relay_3"
+    state_topic: "/home/multi_relay/command/"
+    command_topic: "/home/multi_relay/command/"
+    payload_on: "Relay_3_ON"
+    payload_off: "Relay_3_OFF"
+    optimistic: false
+    qos: 0
+    retain: false
+#    value_template: '{{ value.x }}'
+
+  - platform: mqtt
+    name: "Multi_Relay_4"
+    state_topic: "/home/multi_relay/command/"
+    command_topic: "/home/multi_relay/command/"
+    payload_on: "Relay_4_ON"
+    payload_off: "Relay_4_OFF"
+    optimistic: false
+    qos: 0
+    retain: false
+#    value_template: '{{ value.x }}'
+
+  - platform: mqtt
+    name: "Reset Multi_Relay"
+    state_topic: "/home/multi_relay/command/"
+    command_topic: "/home/multi_relay/command/"
+    payload_on: "RESET"
+    payload_off: "OFF"
+    optimistic: false
+    qos: 0
+    retain: false
+    
+  - platform: mqtt
+    name: "ESP826601 Switch"
+    state_topic: "/home/office/digitalswitch/"
+    command_topic: "/home/office/digitalswitch/"
+    payload_on: "0"
+    payload_off: "1"
+    optimistic: false
+    qos: 0
+    retain: false
+    
+  - platform: wake_on_lan
+    mac_address: "[redacted]"
+    name: "WOL_OP_780"
+    host: "10.0.0.4"
+
+  - platform: wake_on_lan
+    mac_address: "[redacted]"
+    name: "WOL_OP_755"
+
+
+  - platform: wake_on_lan
+    mac_address: "[redacted]"
+    name: "WOL_ASUS01"
+    host: "10.0.0.9"
+
+  - platform: wake_on_lan
+    mac_address: "[redacted]"
+    name: "WOL_TOSHIBA01"

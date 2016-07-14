@@ -1,0 +1,24 @@
+# Weather Radar
+  - platform: generic
+    still_image_url: https://radblast.wunderground.com/cgi-bin/radar/WUNIDS_map?station=BYX&brand=wui&num=1&delay=15&type=N0R&frame=0&scale=0.5&noclutter=0&showstorms=0&mapx=400&mapy=240&centerx=413.875&centery=218.625&transx=13.875&transy=-21.375&showlabels=1&severe=0&rainsnow=0&lightning=0&smooth=0&rand=24449509&lat=0&lon=0&label=you
+    name: Key West
+
+  - platform: mjpeg
+    mjpeg_url: http://10.0.0.27:80
+    name: Living Room
+    username: [redacted]
+    password: [redacted]
+
+##Defeway NVR01
+  - platform: mjpeg
+    mjpeg_url: http://10.0.0.5:10554/videostream.cgi
+    name: NVR02
+    username: [redacted]
+    password: [redacted]
+  
+##Defeway NVR02
+  - platform: mjpeg
+    mjpeg_url: http://10.0.0.6:10554/videostream.cgi
+    name: NVR02 
+    username: [redacted]
+    password: [redacted]
